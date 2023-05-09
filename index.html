@@ -5,7 +5,12 @@
     <meta charset="UTF-8">
 
     <title>Three js</title>
-
+    <style>
+        html,
+        body {
+            margin: 0;
+        }
+    </style>
 </head>
 
 <body>
@@ -23,7 +28,8 @@
         let scene, camera, renderer;
         function init() {
             renderer = new THREE.WebGLRenderer({ antialias: true });
-            renderer.setSize(window.innerHeight, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            console.log("inner", window.innerHeight, "outer", window.innerHeight);
             document.body.appendChild(renderer.domElement);
             scene = new THREE.Scene();
             scene.background = new THREE.Color(0xf5f5f5);
@@ -51,7 +57,7 @@
         function onWindowResize() {
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
-            renderer.setSize(window.innerHeight, window.innerHeight);
+            renderer.setSize(window.innerWidth, window.innerHeight);
         }
         window.addEventListener('resize', onWindowResize);
         init();
